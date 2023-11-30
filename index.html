@@ -12,14 +12,15 @@
     <header class="flex-container">
         <ul>
             <li class="view-highscores"> View Highscores</li>
-            <li class="timer">Timer goes here</li>
+            <li class="timer"><p id="timerDisplay"></p></li>
         </ul>
     </header>
     <main class="flex-card-start-quiz">
         <h2 class="flex-quiz-name">Coding Quiz Challenge</h2>
         <p class="flex-summary">Try to answer the following code-related questions within the time limit. Keep in
             mind that incorrect answers will penalize yours scoretime by ten seconds!</p>
-        <button id="start" class="start-btn">Start Quiz</button>
+        <button id="startButton" class="start-btn">Start Quiz</button>
+        <div class="answersListElement"></div>
     </main>
 
         <script src="./assets/script.js"></script>
