@@ -26,31 +26,32 @@ document.addEventListener('DOMContentLoaded', function () {
         header.style.display = 'flex'; //display timer and view-highscore text at the top of the page on click//
         mainSection.style.display = 'none'; //make background deep pink on click//
         document.body.style.backgroundColor = 'deeppink'; //make background deep pink on click//
+        displayQuestions(questionIndex)
     });
-        //var answersElementList = document.querySelector ('answersListElement');//display Question object and display all indexes in the array of each object/question.//
-        //var answerListElement = [
-        //     "Commonly used data types do not include what?": ["strings", "booleans", "alerts", "number"],
-        //     "The condition in an if/else statement is enclosed with what?": ["quotes", "curly braces", "parentheses", "square brackets"],
-        //     "Arrays in JavaScript can be used to store what?": ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        //     "String values must be enclosed within what when being assigned to variables?": ["JavaScript", "terminal/bash", "quotes", "curly braces"],
-        //     "A very useful tool used during development and debugging for printing content to the debugger is what?": ["JavaScript", "terminal/bash", "for loops", "console.log"]
-        // ];
-        // var questionIndex = 0;
+        var questionanswersList = document.querySelector ('.questionanswersList');//display Question object and display all indexes in the array of each object/question.//
+        var answerListElement = [
+            {question:"Commonly used data types do not include what?:" , answers:["strings", "booleans", "alerts", "number"]},
+            {question:"The condition in an if/else statement is enclosed with what?:" , answers:["quotes", "curly braces", "parentheses", "square brackets"]},
+            {question:"Arrays in JavaScript can be used to store what?:" , answers: ["numbers and strings", "other arrays", "booleans", "all of the above"]},
+            {question:"String values must be enclosed within what when being assigned to variables?:" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"]},
+            {question:"A very useful tool used during development and debugging for printing content to the debugger is what?:" ["JavaScript", "terminal/bash", "for loops", "console.log"]}
+        ];
+        var questionIndex = 0;
 
-        // function displayQuestions(index) {
-        //     var questionElement = document.querySelector('.questions');
-        //     var answerElement = document.createElement('ol');
+        function displayQuestions(index) {
+            var questionElement = document.querySelector('.questions');
+            var answerElement = document.createElement('ol');
 
-        //     var currentQuestion = Object.keys(displayQuestions)[index];
-        //     var currentAnswer = displayQuestions[currentQuestion];
+            var currentQuestion = answerListElement [questionIndex].question;
+            var currentAnswer = answerListElement [questionIndex].answers;
+            console.log(currentQuestion)
+            questionElement.textContent = currentQuestion;
 
-        //     questionElement.textContent = currentQuestion;
-
-        //     currentAnswer.forEach(answer => {
-        //         var answerItem = document.createElement('li');
-        //         answerItem.textContent = answer;
-        //         answerElement.appendChild(answerItem);
-        //     });
+            currentAnswer.forEach(answer => {
+                var answerItem = document.createElement('li');
+                answerItem.textContent = answer;
+                questionanswersList.appendChild(answerItem);
+            });
 
         //     page1.style.display = 'none';
         //     timer.style.display = 'flex';
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //     });
 
         //     page1.parentNode.insertBefore(answerBtns, questionElement.nextSibling);
-        // }
+        }
         // function startQuiz() {
         //     displayQuestions(0);
         //     startButton.removeEventListener('click',startQuiz);
