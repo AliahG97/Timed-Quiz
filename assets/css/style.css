@@ -29,8 +29,6 @@ main .flex-card-start-quiz,.flex-quiz-name,.flex-summary,.btn  {
 }
 .flex-quiz-name {
     display:flex;
-    justify-content: center;  
-    color: black;
 }
 
 .flex-summary  {
