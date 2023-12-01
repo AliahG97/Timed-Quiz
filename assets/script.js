@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {question:"The condition in an if/else statement is enclosed with what?:" , answers:["quotes", "curly braces", "parentheses", "square brackets"],answerEl:2},
         {question:"Arrays in JavaScript can be used to store what?:" , answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],answerEl:3},
         {question:"String values must be enclosed within what when being assigned to variables?:" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"],answerEl:2},
-        {question:"A very useful tool used during development and debugging for printing content to the debugger is what?:" ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3},
+        {question:"A very useful tool used during development and debugging for printing content to the debugger is what?:", answers: ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3},
     ];
         
     var questionIndex = 0;
@@ -32,15 +32,26 @@ document.addEventListener('DOMContentLoaded', function () {
         var currentQuestion = answerListElement[index].question;
         var currentAnswer = answerListElement[index].answers;
         questionElement.textContent = currentQuestion;
-        console.log(currentQuestion)
+     
         
-        currentAnswer.forEach(answer => {
+        currentAnswer.forEach((answer, idx) => {
             var answerItem = document.createElement('li');
             answerItem.textContent = answer;
+            answerItem.dataset.index = idx;
             questionAnswersList.appendChild(answerItem);
-        });
-    }
+
+            answerItem.addEventListener('click', function (event) {
+                var clickedIndex = parseInt(event.target.dataset.index);
+                if (clickedIndex === answerListElement[index].answerEl) {
+                    console.log('Correct');
+                } else {
+                     console.log('Incorrect');
+                }            
+            });
+        });    
+    }    
 });
+
     
     // var timerInterval;
     // var seconds = 0;

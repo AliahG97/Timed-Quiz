@@ -83,8 +83,30 @@ button {
     cursor: pointer;
     justify-content: center;
     width: fit-content;
-}    
-
+} 
+  .questionAnswersList li {
+    background-color: purple;
+    border-radius: 3px;
+    border: none; 
+    color: white;
+    display: block;
+    font-size: 15px;
+    line-height: 15px; 
+    margin: auto;
+    margin-top: 20px;
+    padding: 4px;
+    text-align: center;
+    cursor: pointer; 
+    justify-content: center;
+    width: fit-content; 
+  }
+  .questions {
+    justify-content:center;
+    text-align:center;
+    padding-top: 60px;
+    padding-bottom:15px;
+    height:auto;
+  }
 /* 
 }
 
