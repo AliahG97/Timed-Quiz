@@ -1,58 +1,64 @@
 document.addEventListener('DOMContentLoaded', function () {
     var startButton = document.getElementById('startButton');//add function to the start button//
-    var timerDisplay = document.getElementById('timerDisplay');//display the timer upon click//
     var header = document.querySelector('.flex-container');//header containing the timer and view high score link//
     var mainSection = document.querySelector('main');//testing if any triggers will work upon click for example change bg color of main//
+    // var timerDisplay = document.getElementById('timerDisplay');//display the timer upon click//
 
-    var timerInterval;
-    var seconds = 0;
-
-
-    function startTimer() { //set timer to increase by 1 second every 1000 miliseconds after statr buton is clicked//
-        timerInterval = setInterval(function () {
-            seconds++;
-            timerDisplay.textContent = formatTime(seconds);
-        }, 1000);
-    }
-
-    function formatTime(time) { //converting minutes into seconds to display//
-        var minutes = Math.floor(time / 60);
-        var remainingSeconds = time % 60;
-        return `${minutes < 10 ? '0' : ''}${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
-    }
-
+    
     startButton.addEventListener('click', function () {
-        startTimer();
+        // startTimer();//Start the timer
         header.style.display = 'flex'; //display timer and view-highscore text at the top of the page on click//
         mainSection.style.display = 'none'; //make background deep pink on click//
         document.body.style.backgroundColor = 'deeppink'; //make background deep pink on click//
-        displayQuestions(questionIndex)
+        displayQuestions(questionIndex);
     });
-        var questionanswersList = document.querySelector ('.questionanswersList');//display Question object and display all indexes in the array of each object/question.//
-        var answerListElement = [
-            {question:"Commonly used data types do not include what?:" , answers:["strings", "booleans", "alerts", "number"]},
-            {question:"The condition in an if/else statement is enclosed with what?:" , answers:["quotes", "curly braces", "parentheses", "square brackets"]},
-            {question:"Arrays in JavaScript can be used to store what?:" , answers: ["numbers and strings", "other arrays", "booleans", "all of the above"]},
-            {question:"String values must be enclosed within what when being assigned to variables?:" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"]},
-            {question:"A very useful tool used during development and debugging for printing content to the debugger is what?:" ["JavaScript", "terminal/bash", "for loops", "console.log"]}
-        ];
-        var questionIndex = 0;
 
-        function displayQuestions(index) {
-            var questionElement = document.querySelector('.questions');
-            var answerElement = document.createElement('ol');
+    var questionAnswersList = document.querySelector ('.questionAnswersList');//display Question object and display all indexes in the array of each object/question.//
 
-            var currentQuestion = answerListElement [questionIndex].question;
-            var currentAnswer = answerListElement [questionIndex].answers;
-            console.log(currentQuestion)
-            questionElement.textContent = currentQuestion;
+    var answerListElement = [
+        {question:"Commonly used data types do not include what?:" , answers:["strings", "booleans", "alerts", "number"], answerEl: 2},
+        {question:"The condition in an if/else statement is enclosed with what?:" , answers:["quotes", "curly braces", "parentheses", "square brackets"],answerEl:2},
+        {question:"Arrays in JavaScript can be used to store what?:" , answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],answerEl:3},
+        {question:"String values must be enclosed within what when being assigned to variables?:" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"],answerEl:2},
+        {question:"A very useful tool used during development and debugging for printing content to the debugger is what?:" ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3},
+    ];
+        
+    var questionIndex = 0;
+    
+    function displayQuestions(index) {
+        var questionElement = document.querySelector('.questions');
+        var answerEl = document.createElement('ol');
+        
+        var currentQuestion = answerListElement[index].question;
+        var currentAnswer = answerListElement[index].answers;
+        questionElement.textContent = currentQuestion;
+        console.log(currentQuestion)
+        
+        currentAnswer.forEach(answer => {
+            var answerItem = document.createElement('li');
+            answerItem.textContent = answer;
+            questionAnswersList.appendChild(answerItem);
+        });
+    }
+});
+    
+    // var timerInterval;
+    // var seconds = 0;
 
-            currentAnswer.forEach(answer => {
-                var answerItem = document.createElement('li');
-                answerItem.textContent = answer;
-                questionanswersList.appendChild(answerItem);
-            });
 
+    // function startTimer() { //set timer to increase by 1 second every 1000 miliseconds after statr buton is clicked//
+    //     timerInterval = setInterval(function () {
+    //         seconds++;
+    //         timerDisplay.textContent = formatTime(seconds);
+    //     }, 1000);
+    // }
+
+    // function formatTime(time) { //converting minutes into seconds to display//
+    //     var minutes = Math.floor(time / 60);
+    //     var remainingSeconds = time % 60;
+    //     return `${minutes < 10 ? '0' : ''}${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    // }
+    //---------->this section will turn on the timer<------------
         //     page1.style.display = 'none';
         //     timer.style.display = 'flex';
         //     headerText.forEach(element => {
@@ -73,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //     });
 
         //     page1.parentNode.insertBefore(answerBtns, questionElement.nextSibling);
-        }
+        //}
         // function startQuiz() {
         //     displayQuestions(0);
         //     startButton.removeEventListener('click',startQuiz);
@@ -86,4 +92,4 @@ document.addEventListener('DOMContentLoaded', function () {
         //         }
         //     });
         // }
-    });
+    //});
