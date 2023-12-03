@@ -5,7 +5,8 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
-    background-color: blueviolet;
+    background-color:white;
+    
 
 }
 
@@ -66,25 +67,7 @@ button {
     padding: 20px;
 
 }
-
-.startButton {
-    border: none;
-    background-color: rgb(129, 94, 151);
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
-    color: hsl(0, 0%, 100%);
-    display: block;
-    font-size: 15px;
-    line-height: 15px;
-    margin: auto;
-    margin-top: 20px;
-    padding: 4px;
-    text-align: center;
-    cursor: pointer;
-    justify-content: center;
-    width: fit-content;
-} 
-  .questionAnswersList li {
+.start-btn, button, .answer-btn {
     background-color: purple;
     border-radius: 3px;
     border: none; 
@@ -98,15 +81,62 @@ button {
     text-align: center;
     cursor: pointer; 
     justify-content: center;
-    width: fit-content; 
+    width: fit-content;
+}
+.start-btn:hover, button:hover, .answer-btn:hover {
+    background-color:plum;
+    
+}
+.start-btn:active, button:active, .answer-btn:active {
+    outline:2px solid deepskyblue;
+}
+.ol { 
+    font-weight:bold;
+    font-size:50px;
+    
+
+
+}
+
+.questionAnswersList li {
+    background-color: purple;
+    border-radius: 3px;
+    border: none; 
+    color: white;
+    display: block;
+    font-size: 15px;
+    line-height: 15px; 
+    margin: auto;
+    margin-top: 20px;
+    padding: 4px;
+    text-align: center;
+    cursor: pointer; 
+    justify-content: center;
+    width: fit-content;
+    position:relative;
+    margin-bottom:0;
+
   }
-  .questions {
+
+  .question {
     justify-content:center;
     text-align:center;
     padding-top: 60px;
-    padding-bottom:15px;
-    height:auto;
+    padding-bottom:15px
   }
+
+.result  {
+    justify-content:center;
+    text-align:center;
+    border-top:1px solid #000;
+    padding-top:15px;
+    border-top-color: gray;
+    color:gray;
+    max-width:40%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
 /* 
 }
 
