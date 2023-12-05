@@ -20,39 +20,46 @@ document.addEventListener('DOMContentLoaded', function () {
             questionAnswersList.appendChild(answerItem);
             
             
-            answerItem.addEventListener('click', function (event) {
-                var clickedIndex = idx;
-                var correctAnswerIndex = answerListElement[questionIndex].answerEl;
-                var resultDisplay = document.createElement('p');
-                resultDisplay.classList.add('result');
-                
-                if (clickedIndex === correctAnswerIndex) {
-                    resultDisplay.textContent ='Correct!';
-                    questionAnswersList.appendChild(resultDisplay);
+        answerItem.addEventListener('click', function (event) {
+            var clickedIndex = idx;
+            var correctAnswerIndex = answerListElement[questionIndex].answerEl;
+            var resultDisplay = document.createElement('p');
+            resultDisplay.classList.add('result');   
 
-                } else { 
-                    resultDisplay.textContent ='Wrong!';
-                    questionAnswersList.appendChild(resultDisplay);
-                
-                }  
-                
-                var existingResult = document.querySelector('.result');
-                if (existingResult) {
-                existingResult.remove();
-                }          
-                
+
+            if (clickedIndex === correctAnswerIndex) {
+                resultDisplay.textContent ='Correct!';
                 questionAnswersList.appendChild(resultDisplay);
+                    
+                if (questionIndex === answerListElement.length - 1) {
+                    setTimeout(function () {
+                        questionIndex++;
+                        document.querySelector('.question').style.display = 'none';
+                        var allDoneElement = document.querySelector('.allDone')
+                        allDoneElement.style.display = 'flex';
+                        document.querySelector('.questionAnswersList').style.display = 'none';
 
-                if (clickedIndex === correctAnswerIndex) {
+                    },1000);         
+            // if (clickedIndex === correctAnswerIndex) {
+                } else {        
                     setTimeout(function () {
                         questionIndex++;
                         if (questionIndex < answerListElement.length) {
-                                displayQuestions(questionIndex);
+                            displayQuestions(questionIndex);
                         } else {
                             console.log('AllQuestions Displayed')
                         }
                     }, 1000);
                 }
+            } else {
+                    resultDisplay.textContent ='Wrong!';
+                    questionAnswersList.appendChild(resultDisplay);
+                }
+                var existingResult = document.querySelector('.result');
+                if (existingResult) {
+                existingResult.remove();
+                }
+                questionAnswersList.appendChild(resultDisplay);
             });
         });
     }
