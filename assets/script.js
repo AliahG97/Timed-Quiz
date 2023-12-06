@@ -39,40 +39,44 @@ document.addEventListener('DOMContentLoaded', function () {
                     questionAnswersList.appendChild(resultDisplay);
                         
                     if (questionIndex === answerListElement.length - 1) {
+                        clearInterval(timerInterval);
                         setTimeout(function () {
                             questionIndex++;
                             document.querySelector('.question').style.display = 'none';
-                            var allDoneElement = document.querySelector('.allDone')
+                            var allDoneElement = document.querySelector('.allDone');
                             allDoneElement.style.display = 'flex';
                             document.querySelector('.questionAnswersList').style.display = 'none';
-
                         },1000);         
-                // if (clickedIndex === correctAnswerIndex) {
-                    } else {        
+                    } else {   
                         setTimeout(function () {
                             questionIndex++;
                             if (questionIndex < answerListElement.length) {
                                 displayQuestions(questionIndex);
-                            } else {
-                                console.log('AllQuestions Displayed')
-                            }
+                                console.log('All Questions Displayed')
+                            }        
                         }, 1000);
-                    }
-                } else {
-                        resultDisplay.textContent ='Wrong!';
+                    } 
+                } else {   
+                        resultDisplay.textContent = 'Wrong!';
                         questionAnswersList.appendChild(resultDisplay);
                         seconds += 10;
-                        updateTimerDisplay ();
-                }
-                var existingResult = document.querySelector('.result');
-                if (existingResult) {
-                    existingResult.remove();
-                }
-                questionAnswersList.appendChild(resultDisplay);
-            });
-        });
-    }
+                        updateTimerDisplay (); 
 
+                    setTimeout(function () {
+                        resultDisplay.textContent = ''; 
+                        var existingResult = document.querySelector('.result');
+                        if (existingResult) {
+                            existingResult.remove();
+                    }
+                    questionAnswersList.appendChild(resultDisplay);
+                    questionIndex++;
+                    if(questionIndex < answerListElement.length) {
+                        displayQuestions(questionIndex);
+                    }
+                }, 1000);
+            }
+        });        
+    }               
     function startTimer() {
         timerInterval = setInterval(function () {
             seconds++;
@@ -87,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateTimerDisplay () {
-        timerDisplay.textContent = formatTime(seconds)
+        timerDisplay.textContent = formatTime(seconds);
 
     }
     startButton.addEventListener('click', function () {
@@ -105,4 +109,5 @@ document.addEventListener('DOMContentLoaded', function () {
         {question:"4.String values must be enclosed within _____ when being assigned to variables?" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"],answerEl:2},
         {question:"5.A very useful tool used during development and debugging for printing content to the debugger is_____?", answers: ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3}
     ];
-    });    
+});
+    
