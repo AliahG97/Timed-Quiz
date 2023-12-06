@@ -7,7 +7,41 @@ document.addEventListener('DOMContentLoaded', function () {
     var timerDisplay = document.getElementById('timerDisplay');//display the timer upon click//
     var timerInterval;
     var seconds = 0;
-    
+
+    var submitButton = document.getElementById('submitButton');
+    var allScoresElement = document.getElementById('allScores');
+
+    submitButton.addEventListener('click' ,function() {
+        var initials = document.getElementById('initialsInput').value;
+        var existingHighscores = JSON.parse(localStorage.getItem('highscores')) || [];
+        var newScore = { initials: initials, score: seconds };
+
+        existingHighscores.push(newScore);
+        existingHighscores.sort((a, b) => a.score -b.score);
+
+        localStorage.setItem('highscores', JSON.stringify(existingHighscores));
+
+        displayHighscores();
+    });
+
+    function displayHighscores() {
+        var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+        if (highscores.length > 0 ) {
+            var ol = document.createElement('ol');
+            highscores.forEach(function (score, index) {
+                var li = document.createElement('li');
+                li.textContent = `${index + 1}. ${score.initials} - ${score.score}`;
+                ol.appendChild(li);
+            });
+            allScoresElement.innerHTML = '';
+            allScoresElement.appendChild(ol);
+            allScoresElement.style.display = 'block';
+        } else { 
+            allScoresElement.innerHTML = '<p>No highscores yet!</p>';
+        }
+    }
+
+
     function displayQuestions(index) {
         var questionElement = document.querySelector('.question');
         var currentQuestion = answerListElement[index].question;
@@ -42,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     setTimeout(function () {
                         var finalScoreElement = document.getElementById('finalScore');
                         finalScoreElement.textContent = seconds;
-                        
+
                         questionIndex++;
                         document.querySelector('.question').style.display = 'none';
                         var allDoneElement = document.querySelector('.allDone')
@@ -81,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
         if (questionIndex === answerListElement.length) {
             clearInterval(timeInterval);
-            localStorage.SetItem('YourTimeKey',seconds);
+            localStorage.setItem('YourTimeKey',seconds);
     
         }    
     }    
@@ -107,4 +141,4 @@ document.addEventListener('DOMContentLoaded', function () {
         {question:"4.String values must be enclosed within _____ when being assigned to variables?" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"],answerEl:2},
         {question:"5.A very useful tool used during development and debugging for printing content to the debugger is_____?", answers: ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3}
     ];
-    });    
+});    
