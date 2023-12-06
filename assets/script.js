@@ -27,56 +27,50 @@ document.addEventListener('DOMContentLoaded', function () {
             questionAnswersList.appendChild(answerItem);
             
             
-            answerItem.addEventListener('click', function (event) {
-                var clickedIndex = idx;
-                var correctAnswerIndex = answerListElement[questionIndex].answerEl;
-                var resultDisplay = document.createElement('p');
-                resultDisplay.classList.add('result');   
+        answerItem.addEventListener('click', function (event) {
+            var clickedIndex = idx;
+            var correctAnswerIndex = answerListElement[questionIndex].answerEl;
+            var resultDisplay = document.createElement('p');
+            resultDisplay.classList.add('result');   
 
 
-                if (clickedIndex === correctAnswerIndex) {
-                    resultDisplay.textContent ='Correct!';
-                    questionAnswersList.appendChild(resultDisplay);
-                        
-                    if (questionIndex === answerListElement.length - 1) {
-                        clearInterval(timerInterval);
-                        setTimeout(function () {
-                            questionIndex++;
-                            document.querySelector('.question').style.display = 'none';
-                            var allDoneElement = document.querySelector('.allDone');
-                            allDoneElement.style.display = 'flex';
-                            document.querySelector('.questionAnswersList').style.display = 'none';
-                        },1000);         
-                    } else {   
-                        setTimeout(function () {
-                            questionIndex++;
-                            if (questionIndex < answerListElement.length) {
-                                displayQuestions(questionIndex);
-                                console.log('All Questions Displayed')
-                            }        
-                        }, 1000);
-                    } 
-                } else {   
-                        resultDisplay.textContent = 'Wrong!';
-                        questionAnswersList.appendChild(resultDisplay);
-                        seconds += 10;
-                        updateTimerDisplay (); 
-
+            if (clickedIndex === correctAnswerIndex) {
+                resultDisplay.textContent ='Correct!';
+                questionAnswersList.appendChild(resultDisplay);
+                    
+                if (questionIndex === answerListElement.length - 1) {
                     setTimeout(function () {
-                        resultDisplay.textContent = ''; 
-                        var existingResult = document.querySelector('.result');
-                        if (existingResult) {
-                            existingResult.remove();
-                    }
+                        questionIndex++;
+                        document.querySelector('.question').style.display = 'none';
+                        var allDoneElement = document.querySelector('.allDone')
+                        allDoneElement.style.display = 'flex';
+                        document.querySelector('.questionAnswersList').style.display = 'none';
+                        clearInterval(timerInterval);    
+                    },1000);         
+            // if (clickedIndex === correctAnswerIndex) {
+                } else {        
+                    setTimeout(function () {
+                        questionIndex++;
+                        if (questionIndex < answerListElement.length) {
+                            displayQuestions(questionIndex);
+                        } else {
+                            console.log('AllQuestions Displayed')
+                        }
+                    }, 1000);
+                }
+            } else {
+                    resultDisplay.textContent ='Wrong!';
                     questionAnswersList.appendChild(resultDisplay);
-                    questionIndex++;
-                    if(questionIndex < answerListElement.length) {
-                        displayQuestions(questionIndex);
-                    }
-                }, 1000);
+                }
+                var existingResult = document.querySelector('.result');
+                if (existingResult) {
+                existingResult.remove();
             }
-        });        
-    }               
+            questionAnswersList.appendChild(resultDisplay);
+            });
+        });
+    }
+
     function startTimer() {
         timerInterval = setInterval(function () {
             seconds++;
@@ -89,13 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var remainingSeconds = time % 60;
         return `${minutes < 10 ? '0' : ''}${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     }
-
-    function updateTimerDisplay () {
-        timerDisplay.textContent = formatTime(seconds);
-
-    }
+    
     startButton.addEventListener('click', function () {
-        startTimer();//Start the timer
+            // startTimer();//Start the timer
         header.style.display = 'flex'; //display timer and view-highscore text at the top of the page on click//
         mainSection.style.display = 'none'; //make background deep pink on click//
         displayQuestions(questionIndex);
@@ -109,5 +99,4 @@ document.addEventListener('DOMContentLoaded', function () {
         {question:"4.String values must be enclosed within _____ when being assigned to variables?" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"],answerEl:2},
         {question:"5.A very useful tool used during development and debugging for printing content to the debugger is_____?", answers: ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3}
     ];
-});
-    
+    });    
