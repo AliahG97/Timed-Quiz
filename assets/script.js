@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     
                 if (questionIndex === answerListElement.length - 1) {
                     setTimeout(function () {
+                        var finalScoreElement = document.getElementById('finalScore');
+                        finalScoreElement.textContent = seconds;
+                        
                         questionIndex++;
                         document.querySelector('.question').style.display = 'none';
                         var allDoneElement = document.querySelector('.allDone')
@@ -76,6 +79,11 @@ document.addEventListener('DOMContentLoaded', function () {
             seconds++;
             timerDisplay.textContent = formatTime(seconds);
         }, 1000);
+        if (questionIndex === answerListElement.length) {
+            clearInterval(timeInterval);
+            localStorage.SetItem('YourTimeKey',seconds);
+    
+        }    
     }    
 
     function formatTime(time) {

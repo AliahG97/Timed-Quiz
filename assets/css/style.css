@@ -142,6 +142,9 @@ button {
     align-items: center;
     margin-top: 100px;
 }
+.highscores {
+    display:none;
+}
 
 /* 
 }
