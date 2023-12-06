@@ -27,46 +27,48 @@ document.addEventListener('DOMContentLoaded', function () {
             questionAnswersList.appendChild(answerItem);
             
             
-        answerItem.addEventListener('click', function (event) {
-            var clickedIndex = idx;
-            var correctAnswerIndex = answerListElement[questionIndex].answerEl;
-            var resultDisplay = document.createElement('p');
-            resultDisplay.classList.add('result');   
+            answerItem.addEventListener('click', function (event) {
+                var clickedIndex = idx;
+                var correctAnswerIndex = answerListElement[questionIndex].answerEl;
+                var resultDisplay = document.createElement('p');
+                resultDisplay.classList.add('result');   
 
 
-            if (clickedIndex === correctAnswerIndex) {
-                resultDisplay.textContent ='Correct!';
-                questionAnswersList.appendChild(resultDisplay);
-                    
-                if (questionIndex === answerListElement.length - 1) {
-                    setTimeout(function () {
-                        questionIndex++;
-                        document.querySelector('.question').style.display = 'none';
-                        var allDoneElement = document.querySelector('.allDone')
-                        allDoneElement.style.display = 'flex';
-                        document.querySelector('.questionAnswersList').style.display = 'none';
-
-                    },1000);         
-            // if (clickedIndex === correctAnswerIndex) {
-                } else {        
-                    setTimeout(function () {
-                        questionIndex++;
-                        if (questionIndex < answerListElement.length) {
-                            displayQuestions(questionIndex);
-                        } else {
-                            console.log('AllQuestions Displayed')
-                        }
-                    }, 1000);
-                }
-            } else {
-                    resultDisplay.textContent ='Wrong!';
+                if (clickedIndex === correctAnswerIndex) {
+                    resultDisplay.textContent ='Correct!';
                     questionAnswersList.appendChild(resultDisplay);
+                        
+                    if (questionIndex === answerListElement.length - 1) {
+                        setTimeout(function () {
+                            questionIndex++;
+                            document.querySelector('.question').style.display = 'none';
+                            var allDoneElement = document.querySelector('.allDone')
+                            allDoneElement.style.display = 'flex';
+                            document.querySelector('.questionAnswersList').style.display = 'none';
+
+                        },1000);         
+                // if (clickedIndex === correctAnswerIndex) {
+                    } else {        
+                        setTimeout(function () {
+                            questionIndex++;
+                            if (questionIndex < answerListElement.length) {
+                                displayQuestions(questionIndex);
+                            } else {
+                                console.log('AllQuestions Displayed')
+                            }
+                        }, 1000);
+                    }
+                } else {
+                        resultDisplay.textContent ='Wrong!';
+                        questionAnswersList.appendChild(resultDisplay);
+                        seconds += 10;
+                        updateTimerDisplay ();
                 }
                 var existingResult = document.querySelector('.result');
                 if (existingResult) {
-                existingResult.remove();
-            }
-            questionAnswersList.appendChild(resultDisplay);
+                    existingResult.remove();
+                }
+                questionAnswersList.appendChild(resultDisplay);
             });
         });
     }
@@ -83,9 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var remainingSeconds = time % 60;
         return `${minutes < 10 ? '0' : ''}${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
     }
-    
+
+    function updateTimerDisplay () {
+        timerDisplay.textContent = formatTime(seconds)
+
+    }
     startButton.addEventListener('click', function () {
-            startTimer();//Start the timer
+        startTimer();//Start the timer
         header.style.display = 'flex'; //display timer and view-highscore text at the top of the page on click//
         mainSection.style.display = 'none'; //make background deep pink on click//
         displayQuestions(questionIndex);
