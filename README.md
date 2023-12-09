@@ -1,1 +1,40 @@
-# Timed-Quiz
+# Timer-Quiz
+website uses HTML and CSS code to create a static display the services and benefits of a company called Horiseon,  which specialises in social solutions such as, SEO, online reputation management and social media management.
+
+## Table of contents
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+The website's Java script code is structured with the following elements
+- Header with link to view all locally stored highscores, and a timer.
+- The start page of the quiz with a title, instructions, rules and a start button.
+- Main content is an array of objects, which are questions containting, array of strings/answers, and the correct answer index.
+- Each answer is a button that will display correct or wrong. However, when a wrong answer is selected 10 seconds are added to the clock.
+- When the last question is answered, the timer stops and displays the score, with an input for initals, and a submit button which will display all highscores.
+- when all highscores are displayed there is a button to clear all saved high scored from the storage and display. There's also a button to go back to the enter initials input.
+
+## Screenshots
+![Timer Screenshot](./assets/images/Horiseon_Screenshot.png) (https://aliahg97.github.io/Challenge-1/)
+
+## Usage 
+This quiz is to test a coding student's knowledge on coding basics in the fastest timer possible compared to other highscores saved locally.
+git clone https://github.com/AliahG97/horiseon.git
+
+## Contributing
+Adjusting the viewhighscore hyperlink in the header, and the go back button function.
+
+## License
+Creative Common license
+© 2023 Aliah Guerra. Confidential and Proprietary. All Rights Reserved.
+
+
+
+
+
+
+
+

@@ -160,17 +160,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, 1000);
                 }
             } else {
-                    resultDisplay.textContent ='Wrong!';
-                    questionAnswersList.appendChild(resultDisplay);
+                resultDisplay.textContent ='Wrong!';
+                questionAnswersList.appendChild(resultDisplay);
+                seconds +=10;
+                timerDisplay.textContent = formatTime(seconds);
                 }
                 var existingResult = document.querySelector('.result');
                 if (existingResult) {
                 existingResult.remove();
             }
             questionAnswersList.appendChild(resultDisplay);
-            });
         });
-    }
+    });
 
     function startTimer() {
         timerInterval = setInterval(function () {
