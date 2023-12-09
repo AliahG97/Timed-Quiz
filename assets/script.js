@@ -8,21 +8,71 @@ document.addEventListener('DOMContentLoaded', function () {
     var timerInterval;
     var seconds = 0;
 
+    var allDoneElement = document.querySelector('.allDone')
     var submitButton = document.getElementById('submitButton');
-    var allScoresElement = document.getElementById('allScores');
+    var handleBackButton = document.querySelector('back-btn');
+    var backButtonEl = document.getElementById('backButton');
+    var clearButtonEl = document.getElementById('clearButton');
+    var allScoresElement = document.getElementById('highscores');
+    var highscoresElement = document.getElementById('viewHighscores');
 
-    submitButton.addEventListener('click' ,function() {
+    var handleBackButton =  function() {
+        if (highscoresElement && allDoneElement) {
+            highscoresElement.style.display = 'flex';
+            allDoneElement.style.display = 'none';   
+            displayHighscores();
+        } else {
+            console.log.error("cannot find elements");
+        }
+    };
+
+    var handleViewHighscores = function() {
+        if (highscoresElement && allDoneElement) {
+            highscoresElement.style.display = 'flex';
+            allDoneElement.style.display = 'none';  
+            displayHighscores(); 
+        } else {
+            console.error("cannot find elements");
+        }
+    };
+    
+    
+    submitButton.addEventListener('click', handleSubmit);
+    backButtonEl.addEventListener('click', handleBackButton);
+    
+    var viewHighscores = document.getElementById('viewHighscores');
+    if(viewHighscores) {
+        viewHighscores.addEventListener('click', handleViewHighscores);
+    }   
+    
+    function handleSubmit() {
         var initials = document.getElementById('initialsInput').value;
         var existingHighscores = JSON.parse(localStorage.getItem('highscores')) || [];
         var newScore = { initials: initials, score: seconds };
-
+        
         existingHighscores.push(newScore);
         existingHighscores.sort((a, b) => a.score -b.score);
-
+        
         localStorage.setItem('highscores', JSON.stringify(existingHighscores));
-
+        
+        var allDoneElement = document.querySelector('.allDone');
+        allDoneElement.style.display = 'none';
+        
+        var highscoresElement = document.querySelector('.highscores');
+        highscoresElement.style.display = 'flex';
+        
+        var hsElement = document.querySelector('.hs');
+        hsElement.style.display = 'block';
+        
+        var backBtn = document.querySelector('.back-btn');
+        backBtn.style.display = 'block';
+        
+        
+        var clearBtnEl = document.querySelector('.clear-btn');
+        clearBtnEl.style.display = 'block';
         displayHighscores();
-    });
+        hideListMarkers();
+    }
 
     function displayHighscores() {
         var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
@@ -35,12 +85,26 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             allScoresElement.innerHTML = '';
             allScoresElement.appendChild(ol);
-            allScoresElement.style.display = 'block';
         } else { 
             allScoresElement.innerHTML = '<p>No highscores yet!</p>';
         }
-    }
+        allScoresElement.style.display = 'flex';
+        }
+        clearBtnEl = document.querySelector('.clear-btn');
+        clearBtnEl.addEventListener('click', function () {
+            localStorage.removeItem('highscores');
+            allScoresElement.innerHTML = '<p>No highscores yet!</p>';
+        });
+        allScoresElement.style.display = 'flex';
 
+
+    function hideListMarkers() {
+        var listItems = document.querySelectorAll('#highscores ol li');
+        listItems.forEach(function (item) {
+            item.style.listStyleType = 'none';
+        
+        });
+    }
 
     function displayQuestions(index) {
         var questionElement = document.querySelector('.question');
@@ -141,4 +205,4 @@ document.addEventListener('DOMContentLoaded', function () {
         {question:"4.String values must be enclosed within _____ when being assigned to variables?" , answers: ["JavaScript", "terminal/bash", "quotes", "curly braces"],answerEl:2},
         {question:"5.A very useful tool used during development and debugging for printing content to the debugger is_____?", answers: ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3}
     ];
-});    
+});

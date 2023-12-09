@@ -11,8 +11,10 @@
 <body>
     <header class="flex-container">
         <ul>
-            <li class="view-highscores"> View Highscores</li>
-            <li class="timer"><p id="timerDisplay"></p></li>
+            <li class="view-highscores" id="ViewHighscores"> View Highscores</li>
+            <li class="timer">
+                <p id="timerDisplay"></p>
+            </li>
         </ul>
     </header>
     <main class="flex-card-start-quiz">
@@ -31,8 +33,12 @@
         <p>Enter initials:<input type="text" id="initialsInput"></p>
         <button id="submitButton" class="submit-btn">Submit</button>
     </section>
-    <div class="highscores" id="allScores"><h1>Highscores!</h1></div>
-        <script src="./assets/script.js"></script>
+    <div class="highscores">
+        <h1 class="hs" id="hs">Highscores!</h1>
+        <div id="highscores"></div>
+        <div id="btnContainer"><button id="backButton" class="back-btn">Back</button><button id="clearButton" class="clear-btn">Clear</button></div>
+    </div>
+    <script src="./assets/script.js"></script>
 </body>
 
-</html>s
+</html>

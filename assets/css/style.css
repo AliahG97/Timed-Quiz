@@ -54,7 +54,7 @@ main {
     color: black;
 }
 
-.flex-summary {
+.flex-summary, .highscores p {
     color: black;
     text-align: center;
     width: 530px;
@@ -67,7 +67,7 @@ button {
     padding: 20px;
 
 }
-.start-btn, button, .answer-btn, .submit-btn {
+.start-btn, button, .answer-btn, .submit-btn, .back-btn, .clear-btn {
     background-color: purple;
     border-radius: 3px;
     border: none; 
@@ -83,16 +83,19 @@ button {
     justify-content: center;
     width: fit-content;
 }
-.start-btn:hover, button:hover, .answer-btn:hover {
+.start-btn:hover, button:hover, .answer-btn:hover, #backButton:hover, #clearButton:hover {
     background-color:plum;
     
 }
-.start-btn:active, button:active, .answer-btn:active {
+.start-btn:active, button:active, .answer-btn:active,.back-btn:active, .clear-btn:active {
     outline:2px solid deepskyblue;
 }
 .ol { 
     font-weight:bold;
     font-size:50px;
+    color:deeppink;
+    margin-right: 50px;
+
     
 
 
@@ -144,39 +147,84 @@ button {
 }
 .highscores {
     display:none;
+    justify-content:center;
+    text-align:center;
+    padding-top: 60px;
+    padding-bottom:15px;
+    align-items:center;
+    flex-direction:column;
+    
 }
-
-/* 
-}
-
-.flex-card-questions {
+h1 {
+    color: purple;
+    font-weight: 30px;
+    display:none;
+    flex:wrap;
     display: none;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: auto;
-    height: auto
-}
-
-.nav-btn {
-    display: flex;
-    justify-content: center;
+    margin-top: 100px;
+}    
+.allDone {
+    color: purple;
+    font-weight: 30px;
+    display:none;
+    flex:wrap;
+    display: none;
+    flex-direction: column;
     align-items: center;
-    margin: auto 5px;
-    height: auto;
-    flex: wrap;
-
-} */
-/* #back,
-#clear {
+    margin-top: 100px;;
+}
+#allScores {
+    color: purple;
+    font-weight: 30px;
+    display:none;
+    flex:nowrap;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;;
+}
+#allScores ol {
+    color:deeppink;
+}
+li::marker{
+    color:white;
+    padding-left:0;
+    margin-left:0;
+    display:none;
+}
+.hs {
+    color: purple;
+    font-weight: 30px;
+    display:none;
+    flex:wrap;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;;
+}
+#backButton, 
+#clearButton {
     order:1;
     display:inline-block;
     width:auto;
     padding:10px 20px;
     border:none;
-    background-color: aqua;
+    background-color: purple;
     border-radius: 3px;
     color:white;
     text-align:center;
     cursor: pointer;
-    margin: 0 5px; */
+    margin: 0 5px;
+}
+#btnContainer {
+    display:flex;
+
+}
+div#highscores {
+    padding-right:40px;
+}
+div#highscores p {
+    padding-left:40px;
+}
