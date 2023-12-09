@@ -171,6 +171,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             questionAnswersList.appendChild(resultDisplay);
         });
+    });
+}
 
     function startTimer() {
         timerInterval = setInterval(function () {
@@ -197,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
         displayQuestions(questionIndex);
     });
     
-
+    
     var answerListElement = [
         {question:"1.Commonly used data types do not include _____." , answers:["strings", "booleans", "alerts", "number"], answerEl: 2},
         {question:"2.The condition in an if/else statement is enclosed within _____?" , answers:["quotes", "curly braces", "parentheses", "square brackets"],answerEl:2},
@@ -206,4 +208,3 @@ document.addEventListener('DOMContentLoaded', function () {
         {question:"5.A very useful tool used during development and debugging for printing content to the debugger is_____?", answers: ["JavaScript", "terminal/bash", "for loops","console.log"],answerEl:3}
     ];
 });
-}});
