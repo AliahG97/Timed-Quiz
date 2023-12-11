@@ -1,5 +1,5 @@
 # Timer-Quiz
-website uses HTML and CSS code to create a static display the services and benefits of a company called Horiseon,  which specialises in social solutions such as, SEO, online reputation management and social media management.
+website uses HTML and CSS code and java script to create a timed quiz to test a coding students knowledges in coding basics, the highscore can be saved and the highscores can all be veiwed from local storage.
 
 ## Table of contents
 - [Features](#features)
