@@ -18,7 +18,7 @@ website uses HTML and CSS code and java script to create a timed quiz to test a 
 - when all highscores are displayed there is a button to clear all saved high scored from the storage and display. There's also a button to go back to the enter initials input.
 
 ## Screenshots
-![Timer Screenshot](./assets/images/Timed-Quiz_Screenshot.gif) (https://aliahg97.github.io/Timed-Quiz/)
+![Timer Screenshot](./assets/Images/Timed-Quiz_Screenshot.gif) (https://aliahg97.github.io/Timed-Quiz/)
 
 ## Usage 
 This quiz is to test a coding student's knowledge on coding basics in the fastest timer possible compared to other highscores saved locally.
