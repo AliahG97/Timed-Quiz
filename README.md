@@ -1,4 +1,4 @@
-# Timer-Quiz
+# Timed-Quiz
 website uses HTML and CSS code and java script to create a timed quiz to test a coding students knowledges in coding basics, the highscore can be saved and the highscores can all be veiwed from local storage.
 
 ## Table of contents
