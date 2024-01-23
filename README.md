@@ -1,10 +1,6 @@
 # Timer-Quiz
-<<<<<<< HEAD
 website uses HTML and CSS code and java script to create a timed quiz to test a coding students knowledges in coding basics, the highscore can be saved and the highscores can all be veiwed from local storage.
 
-=======
-website uses HTML and CSS code and java script to create a timed quiz to test a coding students knowledges in coding basics, the highscore can be saved and the highscores can all be veiwed from local storage. 
->>>>>>> 41590772df5437d19796c8c908d1d82063b5ef69
 ## Table of contents
 - [Features](#features)
 - [Screenshots](#screenshots)
